@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image to Base64</title>
+    <style>
+        body {
+            font-family: system-ui;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        #drop-zone {
+            border: 3px dashed #ccc;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        #drop-zone.hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .success {
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Convert Image to Base64</h1>
+    <p>Drag and drop your screenshot here, or click to select:</p>
+
+    <div id="drop-zone">
+        <p>📁 Drop image here or click to browse</p>
+        <input type="file" id="file-input" accept="image/*" style="display:none">
+    </div>
+
+    <div id="output" style="display:none">
+        <h3>✅ Image Converted!</h3>
+        <p>Copy this entire text and paste it to Claude:</p>
+        <textarea id="base64-output" readonly></textarea>
+        <br><br>
+        <button onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+        <span id="copy-status"></span>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const output = document.getElementById('output');
+        const textarea = document.getElementById('base64-output');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('hover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('hover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('hover');
+            handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFile(e.target.files[0]);
+        });
+
+        function handleFile(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select an image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const base64 = e.target.result;
+                textarea.value = base64;
+                output.style.display = 'block';
+                dropZone.innerHTML = '<p>✅ Image loaded! Scroll down to copy.</p>';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function copyToClipboard() {
+            textarea.select();
+            document.execCommand('copy');
+            document.getElementById('copy-status').innerHTML = '<span class="success">✅ Copied!</span>';
+            setTimeout(() => {
+                document.getElementById('copy-status').innerHTML = '';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
