@@ -3,7 +3,18 @@
 
 **Version:** 2.0.0 (Flexible Levels)
 **Date:** November 5, 2025
-**Status:** Design Phase
+**Status:** Design Confirmed ✅
+
+---
+
+## ✅ **Confirmed Decisions (by Anton)**
+
+1. **Default Level Names:** "Primitive / Semantic / Component" ✅
+2. **Wizard Behavior:** Auto-suggest Standard (3 levels) but user can choose ✅
+3. **Minimum Levels:** 0 allowed - users can skip token system entirely ✅
+4. **Level Colors:** Yes - each level has distinct color for UI ✅
+
+---
 
 ---
 
@@ -546,21 +557,29 @@ function reorderLevels(newOrder: string[]) {
 
 ---
 
-## 🎯 Key Questions for You:
+## 🎯 Design Decisions (CONFIRMED ✅)
 
-1. **Default Template:** Should "Standard (3 levels)" be the default suggestion after wizard?
+1. **Default Template:** "Standard (3 levels)" auto-suggested, but user can choose ✅
 
-2. **Level Names:** Are these good default names, or do you prefer others?
-   - Primitive / Semantic / Component
-   - Base / Purpose / Implementation
-   - Foundation / System / Component
-   - Core / Context / Application
+2. **Level Names:** "Primitive / Semantic / Component" ✅
+   - Users can rename these to match their team's terminology
+   - Other templates use: Base, Purpose, Implementation, Foundation, System, Core, Context
 
-3. **Minimum Levels:** Should we enforce at least 1 level, or allow 0 (no token system)?
+3. **Minimum Levels:** 0 allowed - users can skip token system entirely ✅
 
-4. **Maximum Levels:** Is there a practical maximum? (5-6 seems reasonable)
+4. **Maximum Levels:** No hard limit, but 5-6 is practical maximum
+   - UI will handle any number gracefully
 
-5. **Level Validation:** Should we prevent deleting a level that has tokens referencing it?
+5. **Level Validation:** Yes - prevent deleting a level that has tokens OR tokens referencing it
+   - Show warning: "X tokens exist at this level. Delete or move them first."
+
+6. **Level Colors:** Each level has distinct UI color for visual organization ✅
+   - Level 1: Blue 🟦 (#3b82f6)
+   - Level 2: Green 🟩 (#10b981)
+   - Level 3: Purple 🟣 (#8b5cf6)
+   - Level 4: Orange 🟧 (#f59e0b)
+   - Level 5: Pink 🩷 (#ec4899)
+   - Level 6+: Auto-generated distinct colors
 
 ---
 
