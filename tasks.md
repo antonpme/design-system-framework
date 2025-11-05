@@ -372,28 +372,72 @@
 
 ## Phase 2: Enhancement (Months 4-6) - Future
 
-### Month 4: User Feedback Integration
+### Month 4: User Feedback & Accounts
 - [ ] Address top user pain points
-- [ ] Improve onboarding
-- [ ] Add wizard templates
-- [ ] Implement project management
-- [ ] Add import functionality
-- [ ] Implement bookmark system
-- [ ] Add user accounts (optional)
+- [ ] Improve onboarding based on data
+- [ ] Add wizard templates (quick start presets)
+- [ ] Implement project management (list, search, filter)
+- [ ] Add import functionality (JSON import)
+- [ ] Implement bookmark system for library
 
-### Month 5: Tool Integrations
+**NEW: User Accounts & Cloud Sync**
+- [ ] Authentication system
+  - [ ] Email/password signup/login
+  - [ ] OAuth (GitHub, Google)
+  - [ ] JWT token management
+  - [ ] Password reset flow
+- [ ] User profile management
+- [ ] Cloud project storage (PostgreSQL)
+- [ ] Manual sync to cloud (save button)
+- [ ] Backend API setup (Node.js + Fastify)
+- [ ] Database setup (PostgreSQL + Redis)
+
+### Month 5: Team Collaboration
+- [ ] Team management
+  - [ ] Create team
+  - [ ] Invite members via email
+  - [ ] Team member list
+  - [ ] Remove members
+- [ ] Project sharing
+  - [ ] Share project with team
+  - [ ] Role-based permissions (owner/editor/viewer)
+  - [ ] Collaborator management
+- [ ] Auto-sync (background sync every 30s)
+- [ ] Conflict detection
+- [ ] Conflict resolution UI
+- [ ] Activity feed (who changed what)
+
+**Tool Integrations**
 - [ ] Figma plugin development
 - [ ] Sketch export format
 - [ ] Style Dictionary integration
 - [ ] GitHub template generator
 - [ ] Content expansion (100+ guidelines)
 
-### Month 6: Advanced Features
-- [ ] Advanced color tools
-- [ ] Accessibility checker
+### Month 6: Advanced Collaboration
+- [ ] Commenting system
+  - [ ] Add comments to specific sections
+  - [ ] Reply to comments
+  - [ ] Mention users (@username)
+  - [ ] Resolve comments
+- [ ] Version history
+  - [ ] Track all changes
+  - [ ] View previous versions
+  - [ ] Restore from version
+- [ ] Project templates
+  - [ ] Save project as template
+  - [ ] Community templates
+- [ ] Advanced permissions
+  - [ ] Fine-grained section permissions
+  - [ ] Viewer/Commenter/Editor roles
+  - [ ] Admin role
+
+**Advanced Features**
+- [ ] Advanced color tools (color blindness sim)
+- [ ] Accessibility checker (contrast, WCAG)
 - [ ] Component dependency visualization
 - [ ] Interactive preview mode
-- [ ] Advanced search
+- [ ] Advanced search with filters
 - [ ] Content rating system
 - [ ] Dark mode
 
